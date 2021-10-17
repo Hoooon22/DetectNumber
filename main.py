@@ -40,7 +40,7 @@ while True:
     )
 
     # Find Contours
-    contours, _ = cv2.findContours(
+    contours, hierarchy = cv2.findContours(
         img_thresh,
         mode=cv2.RETR_LIST,
         method=cv2.CHAIN_APPROX_SIMPLE
@@ -235,7 +235,7 @@ while True:
         _, plate_img = cv2.threshold(plate_img, thresh=0.0, maxval=255.0, type=cv2.THRESH_BINARY | cv2.THRESH_OTSU)
 
         # find contours again (same as above)
-        _, contours, _ = cv2.findContours(plate_img, mode=cv2.RETR_LIST, method=cv2.CHAIN_APPROX_SIMPLE)
+        contours,hierarchy = cv2.findContours(plate_img, mode=cv2.RETR_LIST, method=cv2.CHAIN_APPROX_SIMPLE)
 
         plate_min_x, plate_min_y = plate_img.shape[1], plate_img.shape[0]
         plate_max_x, plate_max_y = 0, 0
