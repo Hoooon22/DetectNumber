@@ -230,18 +230,18 @@ while True:
         img_cropped = cv2.morphologyEx(img_cropped, cv2.MORPH_OPEN, kernel = np.ones((5, 5), np.uint8))
 
         # chars
-        chars = pytesseract.image_to_string(img_cropped, lang='kor', config='--psm 7 --oem 0')
+        chars = pytesseract.image_to_string(img_cropped, lang='eng', config='--psm 7 --oem 0')
 
-        result_chars = ''
-        has_digit = False
-        for c in chars:
-            if ord('가') <= ord(c) <= ord('힣') or c.isdigit():
-                if c.isdigit():
-                    has_digit = True
-        result_chars += c
+        # result_chars = ''
+        # has_digit = False
+        # for c in chars:
+        #     if ord('가') <= ord(c) <= ord('힣') or c.isdigit():
+        #         if c.isdigit():
+        #             has_digit = True
+        # result_chars += c
 
-        if len(chars) == 8 | len(chars) == 9:
-            print(chars)
+        # if len(chars) == 8 | len(chars) == 9:
+        print(chars)
 
     # show Video
     cv2.imshow("VideoFrame", img_cropped)
